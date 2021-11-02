@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button color='dark'></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/register.jpg"></ion-img>
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title class="adopta">Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form #formulario="ngForm" (ngSubmit) ="onSubmit()">
+
+    <ion-item>
+      <ion-label class="label">Usuario: </ion-label>
+      <ion-input clearInput  type="usuario" placeholder="Usuario"
+      name="usuario" [(ngModel)]= "usuario.usuario" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="label">Edad: </ion-label>
+      <ion-input type="number" value="1" placeholder="Edad"
+      name="edad" [(ngModel)]= "usuario.edad" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="label">Género</ion-label>
+      <ion-select placeholder="Género" name="género" [(ngModel)]= "usuario.genero" required>
+        <ion-select-option value="f">Femenino</ion-select-option>
+        <ion-select-option value="m">Masculino</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="label">Email: </ion-label>
+      <ion-input type="email" placeholder="Email"
+                 name="email" [(ngModel)]= "usuario.email"
+                 pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="label">Password: </ion-label>
+      <ion-input type="password" placeholder="Contraseña"
+                 name="password" [(ngModel)]= "usuario.password"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-button [disabled] ="formulario.invalid"
+            type="submit" expand="block" routerLink="/inicio">
+      Enviar Datos
+    </ion-button>
+
+  </form>
+
+</ion-content>
